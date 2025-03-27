@@ -1,5 +1,4 @@
 ---
-// @ts-nocheck
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 const data = await fetch("https://kea-alt-del.dk/t7/api/products").then((res) =>
@@ -9,6 +8,24 @@ console.log(data);
 ---
 
 <Layout>
+  <header>
+    <a href="index.html"><h1>Fashion<span id="highlight">R</span>Us</h1></a>
+    <input type="checkbox" id="burger-toggle" />
+    <label for="burger-toggle" class="burger-menu">&#9776;</label>
+    <nav id="nav-bar">
+      <ul>
+        <li><a href="produktliste.html">Categories</a></li>
+        <li><a href="produktliste.html">Brands</a></li>
+        <li><a href="produktliste.html">Seasons</a></li>
+      </ul>
+    </nav>
+  </header>
   <h2>Produktliste</h2>
-  {data.map((element) => <ProductCard data={element} />)}
+  <section class="product_list_container">
+    {data.map((element) => <ProductCard data={element} />)}
+  </section>
 </Layout>
+
+<style></style>
+
+<script></script>
