@@ -1,8 +1,18 @@
 ---
-const { product } = Astro.props;
-const imagePath = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
+const { data } = Astro.props;
 ---
 
-<article>
-  <h2>{product.productdisplayname}</h2>
+<article class="smallProduct">
+  <img
+    src=`https://kea-alt-del.dk/t7/images/webp/640/${data.id}.webp`
+    alt="product image"
+  />
+  <h3>{data.productdisplayname}</h3>
+  <p class="subtle">Tshirts | Nike</p>
+  <p class="price">DKK <span>1595</span>,-</p>
+  <div class="discounted">
+    <p>Now DKK <span></span>,-</p>
+    <p><span></span>%</p>
+  </div>
+  <a href="product.html">Read More</a>
 </article>
