@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const data = await fetch("https://kea-alt-del.dk/t7/api/products").then(
+    (response) => response.json()
+  );
+
+  return data.map((product) => {
+    return {
+      params: { id: product.id },
+      props: { product },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { product } = Astro.props;
+---
+
+<h1>{id}: {product.name}</h1>
+
+<Layout classes="product">
+  <main id="productContainer">
+    <figure>
+      <img
+        src="https://kea-alt-del.dk/t7/images/webp/640/${productId}.webp"
+        alt="Produktbillede"
+        class="productImage"
+      />
+      <span class="saleLabel">Udsalg!</span>
+    </figure>
+    <section class="productDetails">
+      <h2 class="productName">Produktnavn</h2>
+      <div>
+        <p class="articleType"><span class="bold">Type:</span> Caps</p>
+        <p class="productCategory">
+          <span class="bold">Kategori:</span> Accessories
+        </p>
+        <p class="productPrice"><span class="bold">Pris:</span> 699,-</p>
+      </div>
+      <button class="buyButton">Køb nu</button>
+    </section>
+  </main>
+</Layout>

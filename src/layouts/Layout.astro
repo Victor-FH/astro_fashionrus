@@ -1,6 +1,7 @@
 ---
 import "../css/style.css";
 import "../css/base.css";
+const { classes } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +13,7 @@ import "../css/base.css";
     <meta name="generator" content={Astro.generator} />
     <title>FashionRUs</title>
   </head>
-  <body>
+  <body class={classes}>
     <slot />
   </body>
 </html>
